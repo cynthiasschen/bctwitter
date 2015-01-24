@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'tweets#new'
 
-   #for the tweets controller, add all resources associated with CRUD
+   #for the tweets controller, add all resources associated with CRUD 
    resources :tweets
 
   # Example of regular route:
