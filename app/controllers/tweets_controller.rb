@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
 	def new
-		@champ = "hey champ"
+		@tweet = Tweet.new
 	end
 end
