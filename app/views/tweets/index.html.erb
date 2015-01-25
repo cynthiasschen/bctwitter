@@ -1,5 +1,19 @@
 <ul>
   <% @tweets.each do |tweet| %>
-  	<li><%= tweet.content %></li>
+  	<li>
+  		User:
+  		<%= tweet.user.profile.profile_name%>| 
+  		<%= tweet.content %> | <%= tweet.created_at %>
+  		<% if current_user.following?(tweet.user) %>
+  		<button tyle = "button" class = "btn btn-danger">
+  			Following
+  		</button>
+  		<%else%>
+  			<%= simple_form_for @relationship do |f|%>
+  				<%= f.input :followed_id, as: :hidden, input_html: {value: tweet.user.id} %>
+  				<%= f.button :submit, class: 'btn btn-primary', value: 'Follow' %>
+  			<%end%>
+  		<%end%>
+  	</li>
 	<% end %>
 </ul>

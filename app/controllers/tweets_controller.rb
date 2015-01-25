@@ -27,6 +27,7 @@ class TweetsController < ApplicationController
 	def index
 		#get array of all tweets, discard all tweets if the tweet's user is the current user
 		@tweets = Tweet.all.reject{ |tweet| tweet.user == current_user}
+		@relationship = Relationship.new
 	end
 
 	private 
