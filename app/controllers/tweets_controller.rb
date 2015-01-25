@@ -14,10 +14,12 @@ class TweetsController < ApplicationController
 		#tweet.create is short for tweet.new and tweet.save
 		@tweet = Tweet.new(tweet_params)
 		@tweet.user = current_user
-		@tweet.save
 		@tweets = current_user.tweets
-		#flash is a built in hash
-		flash.now[:success] = "Tweet Created"
+
+		if @tweet.save
+			#flash is a built in hash
+			flash.now[:success] = "Tweet Created"
+		end
 		#render new.html.erb page
 		render 'new'
 	end
