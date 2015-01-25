@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
 
 	def new
 		@tweet = Tweet.new
+		@tweets = current_user.tweets
 	end
 
 	def create
@@ -14,10 +15,16 @@ class TweetsController < ApplicationController
 		@tweet = Tweet.new(tweet_params)
 		@tweet.user = current_user
 		@tweet.save
+		@tweets = current_user.tweets
 		#flash is a built in hash
 		flash.now[:success] = "Tweet Created"
 		#render new.html.erb page
 		render 'new'
+	end
+
+	def index
+		#get array of all tweets, discard all tweets if the tweet's user is the current user
+		@tweets = Tweet.all.reject{ |tweet| tweet.user == current_user}
 	end
 
 	private 
