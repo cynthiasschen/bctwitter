@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'twitter-text', '~> 1.10.0'
 gem 'simple_form'
 
 gem 'devise'
