@@ -5,7 +5,7 @@
   		<%= tweet.user.profile.profile_name%>| 
   		<%= tweet.content %> | <%= tweet.created_at %>
   		<% if current_user.following?(tweet.user) %>
-  		<button tyle = "button" class = "btn btn-danger">
+  		<button type = "button" class = "btn btn-danger">
   			Following
   		</button>
   		<%else%>
